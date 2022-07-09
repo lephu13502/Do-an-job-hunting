@@ -1,8 +1,4 @@
-import Card from '@material-tailwind/react/Card';
-import CardBody from '@material-tailwind/react/CardBody';
-import Icon from '@material-tailwind/react/Icon';
-import H6 from '@material-tailwind/react/Heading6';
-import Paragraph from '@material-tailwind/react/Paragraph';
+import {Card, CardBody, Icon, H6, Paragraph} from '@material-tailwind/react';
 
 const colors = {
     blueGray: 'bg-blue-gray-500',

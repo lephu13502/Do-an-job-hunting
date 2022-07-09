@@ -1,13 +1,6 @@
-import Card from '@material-tailwind/react/Card';
-import CardImage from '@material-tailwind/react/CardImage';
-import CardBody from '@material-tailwind/react/CardBody';
-import Icon from '@material-tailwind/react/Icon';
-import H4 from '@material-tailwind/react/Heading4';
-import H6 from '@material-tailwind/react/Heading6';
-import LeadText from '@material-tailwind/react/LeadText';
-import Paragraph from '@material-tailwind/react/Paragraph';
-import StatusCard from 'components/landing/StatusCard';
-import Teamwork from 'assets/img/teamwork.jpeg';
+import StatusCard from './StatusCard';
+import Teamwork from '../../assets/img/teamwork.jpeg';
+import {Card, CardImage, CardBody, Icon, H4, H6, LeadText, Paragraph} from '@material-tailwind/react';
 
 export default function WorkingSection() {
     return (

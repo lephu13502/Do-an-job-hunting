@@ -1,8 +1,4 @@
-import Image from '@material-tailwind/react/Image';
-import H6 from '@material-tailwind/react/Heading6';
-import Paragraph from '@material-tailwind/react/Paragraph';
-import Button from '@material-tailwind/react/Button';
-import Icon from '@material-tailwind/react/Icon';
+import {Image, H6, Paragraph, Button, Icon} from '@material-tailwind/react';
 
 export default function LandingTeamCard({ img, name, position }) {
     return (

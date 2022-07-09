@@ -1,8 +1,6 @@
-import H5 from '@material-tailwind/react/Heading5';
-import LeadText from '@material-tailwind/react/LeadText';
-import Icon from '@material-tailwind/react/Icon';
+import {H5, LeadText, Icon} from '@material-tailwind/react';
 
-export default function Footer() {
+function Footer() {
     return (
         <>
             <footer className="relative bg-gray-100 pt-8 pb-6">
@@ -204,3 +202,4 @@ export default function Footer() {
         </>
     );
 }
+export default Footer

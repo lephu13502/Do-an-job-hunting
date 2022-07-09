@@ -1,19 +1,13 @@
-import Card from '@material-tailwind/react/Card';
-import CardHeader from '@material-tailwind/react/CardHeader';
-import CardBody from '@material-tailwind/react/CardBody';
-import CardFooter from '@material-tailwind/react/CardFooter';
-import H5 from '@material-tailwind/react/Heading5';
-import InputIcon from '@material-tailwind/react/InputIcon';
-import Button from '@material-tailwind/react/Button';
-import DefaultNavbar from 'components/DefaultNavbar';
-import SimpleFooter from 'components/SimpleFooter';
-import Page from 'components/login/Page';
-import Container from 'components/login/Container';
 
+import Navbar from '../components/Navbar';
+import SimpleFooter from '../components/SimpleFooter';
+import Page from '../components/login/Page';
+import Container from '../components/login/Container';
+import {Card, CardHeader, CardBody, CardFooter, H5, InputIcon, Button} from '@material-tailwind/react';
 export default function Register() {
     return (
         <Page>
-            <DefaultNavbar />
+            <Navbar/>
             <Container>
                 <Card>
                     <CardHeader color="lightBlue">
