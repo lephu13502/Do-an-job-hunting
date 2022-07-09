@@ -28,12 +28,11 @@ function App() {
             <Route path='/profile' element={<PrivateRoute/>}>
               <Route path='/profile' element={<Profile/>}/>
             </Route>
-            
             <Route path='/category/:categoryName' element={<Category/>}/>
             <Route path='/create-post' element={<CreatePost/>}/>
             <Route path='/edit-post/:postId' element={<EditPost/>}/>
             <Route path='/category/:categoryName/:postId' element={<Post/>}/>
-            <Route path='/contact/:landlordId' element={<Contact/>}/>
+            <Route path='/contact/:recruiterId' element={<Contact/>}/>
           </Routes>
         </Router>
       <ToastContainer/>

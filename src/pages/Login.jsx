@@ -1,11 +1,43 @@
-
+import {useState} from 'react';
+import {Link, useNavigate} from 'react-router-dom';
+import {toast} from 'react-toastify';
+import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
+import {ReactComponent as ArrowRightIcon} from '../assets/svg/keyboardArrowRightIcon.svg';
+import visibilityIcon from '../assets/svg/visibilityIcon.svg';
+import OAuth from '../components/OAuth';
 import {Card, CardHeader, CardBody, CardFooter, H5, InputIcon, Checkbox, Button} from '@material-tailwind/react';
 import DefaultNavbar from '../components/Navbar';
 import SimpleFooter from '../components/SimpleFooter';
 import Page from '../components/login/Page';
 import Container from '../components/login/Container';
 
-export default function Login() {
+function Login() {
+    const [showPassword,setShowPassword] = useState(false) 
+    const [formData,setFormData] = useState({
+        email: '',
+        password: ''
+    })
+    const {email,password} = formData
+    const navigate = useNavigate()
+    const onChange = (e) => {
+        setFormData((prevState) => ({
+            ...prevState,
+            [e.target.id]: e.target.value
+
+        }))
+    }
+    const onSubmit = async(e) => {
+        e.preventDefault()
+        try {
+        const auth =getAuth()
+        const userCredential = await signInWithEmailAndPassword(auth, email, password)
+        if (userCredential.user) {
+            navigate('/')
+        }
+        } catch (error) {
+            toast.error('Invalid email or password')
+        }
+    }
     return (
         <Page>
             <DefaultNavbar/>
@@ -60,3 +92,4 @@ export default function Login() {
         </Page>
     );
 }
+export default Login
