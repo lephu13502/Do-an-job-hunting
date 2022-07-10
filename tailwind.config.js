@@ -1,6 +1,8 @@
-module.exports = {
+const withMT = require("@material-tailwind/react/utils/withMT");
+
+module.exports = withMT({
   mode: 'jit',
-  purge: ['./src/**/*.js', './public/index.html'],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   darkMode: false, // or 'media' or 'class'
   theme: {
       fontFamily: {
@@ -23,4 +25,4 @@ module.exports = {
       extend: {},
   },
   plugins: [],
-};
+});

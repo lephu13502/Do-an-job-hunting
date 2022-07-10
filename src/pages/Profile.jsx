@@ -1,7 +1,7 @@
-import Navbar from 'components/Navbar';
-import Footer from 'components/Footer';
-import Header from 'components/profile/Header';
-import Content from 'components/profile/Content';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
+import Header from '../components/profile/Header';
+import Content from '../components/profile/Content';
 
 export default function Profile() {
     return (

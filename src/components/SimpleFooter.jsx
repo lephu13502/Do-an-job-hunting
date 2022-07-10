@@ -1,4 +1,4 @@
-export default function SimpleFooter() {
+function SimpleFooter() {
     return (
         <>
             <footer className="pt-8 pb-6">
@@ -64,3 +64,4 @@ export default function SimpleFooter() {
         </>
     );
 }
+export default SimpleFooter
