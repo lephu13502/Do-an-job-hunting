@@ -1,53 +1,18 @@
-import {Image, H6, Paragraph, Button, Icon} from '@material-tailwind/react';
+import {Typography,Button, IconButton} from '@material-tailwind/react';
 
 export default function LandingTeamCard({ img, name, position }) {
     return (
         <div className="w-full md:w-6/12 lg:w-3/12 lg:mb-0 mb-12 px-4">
             <div className="px-6">
-                <Image src={img} alt={name} raised />
+                <img src={img} alt="img" />
                 <div className="pt-6 text-center">
-                    <H6 color="gray">{name}</H6>
-                    <Paragraph color="blueGray">{position}</Paragraph>
+                    <Typography className="text-blue-gray-800 text-xl font-semibold">{name}</Typography>
+                    <Typography className="text-blue-gray-800 text-sm">{position}</Typography>
                     <div className="flex items-center justify-center">
-                        <Button
-                            color="lightBlue"
-                            buttonType="link"
-                            ripple="dark"
-                            rounded
-                            iconOnly
-                        >
-                            <Icon
-                                family="font-awesome"
-                                name="fab fa-twitter"
-                                size="lg"
-                            />
-                        </Button>
-                        <Button
-                            color="blue"
-                            buttonType="link"
-                            ripple="dark"
-                            rounded
-                            iconOnly
-                        >
-                            <Icon
-                                family="font-awesome"
-                                name="fab fa-facebook-f"
-                                size="lg"
-                            />
-                        </Button>
-                        <Button
-                            color="pink"
-                            buttonType="link"
-                            ripple="dark"
-                            rounded
-                            iconOnly
-                        >
-                            <Icon
-                                family="font-awesome"
-                                name="fab fa-dribbble"
-                                size="lg"
-                            />
-                        </Button>
+                        <IconButton name="facebook" size="lg" color="light-blue" />
+                        <IconButton name="twitter" size="lg" color="light-blue" />
+                        <IconButton name="instagram" size="lg" color="light-blue" />
+                        
                     </div>
                 </div>
             </div>

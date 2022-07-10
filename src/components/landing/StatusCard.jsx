@@ -1,4 +1,4 @@
-import {Card, CardBody, Icon, H6, Paragraph} from '@material-tailwind/react';
+import {Card, CardBody, Typography} from '@material-tailwind/react';
 
 const colors = {
     blueGray: 'bg-blue-gray-500',
@@ -30,10 +30,12 @@ export default function StatusCard({ color, icon, title, children }) {
                     <div
                         className={`p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-md rounded-full ${colors[color]}`}
                     >
-                        <Icon name={icon} size="xl" color="white" />
+                        <Typography className="text-white text-6xl">
+                            {icon}
+                        </Typography>
                     </div>
-                    <H6 color="gray">{title}</H6>
-                    <Paragraph color="blueGray">{children}</Paragraph>
+                    <Typography className="text-blue-gray-800 text-xl font-semibold">{title}</Typography>
+                    <Typography className="text-blue-gray-800 text-sm">{children}</Typography>
                 </CardBody>
             </Card>
         </div>

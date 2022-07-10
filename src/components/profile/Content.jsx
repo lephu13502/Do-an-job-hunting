@@ -1,5 +1,5 @@
 import ProfilePicture from '../../assets/img/team-2-800x800.jpg';
-import {Button, Image, H3, Icon, LeadText} from '@material-tailwind/react';
+import {Button, IconButton, Typography} from '@material-tailwind/react';
 function Content() {
     return (
         <section className="relative py-16 bg-gray-100">
@@ -10,12 +10,7 @@ function Content() {
                             <div className="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
                                 <div className="relative">
                                     <div className="w-40 -mt-20">
-                                        <Image
-                                            src={ProfilePicture}
-                                            alt="Profile picture"
-                                            raised
-                                            rounded
-                                        />
+                                        <img src={ProfilePicture} alt="profile" />
                                     </div>
                                 </div>
                             </div>
@@ -55,17 +50,19 @@ function Content() {
                         </div>
 
                         <div className="text-center my-8">
-                            <H3 color="gray">Jenna Stones</H3>
+                            <Typography className="text-blue-gray-800 text-xl font-semibold">
+                                John Doe
+                            </Typography>
                             <div className="mt-0 mb-2 text-gray-700 font-medium flex items-center justify-center gap-2">
-                                <Icon name="place" size="xl" />
+                                <IconButton name="facebook" size="xl" color="lightBlue" />
                                 Los Angeles, California
                             </div>
                             <div className="mb-2 text-gray-700 mt-10 flex items-center justify-center gap-2">
-                                <Icon name="work" size="xl" />
+                                <IconButton name="twitter" size="xl" color="lightBlue" />
                                 Solution Manager - Creative Tim Officer
                             </div>
                             <div className="mb-2 text-gray-700 flex items-center justify-center gap-2">
-                                <Icon name="account_balance" size="xl" />
+                                <IconButton name="instagram" size="xl" color="lightBlue" />
                                 University of Computer Science
                             </div>
                         </div>
@@ -73,15 +70,14 @@ function Content() {
                         <div className="mb-10 py-2 border-t border-gray-200 text-center">
                             <div className="flex flex-wrap justify-center">
                                 <div className="w-full lg:w-9/12 px-4 flex flex-col items-center">
-                                    <LeadText color="blueGray">
-                                        An artist of considerable range, Jenna
-                                        the name taken by Melbourne-raised,
-                                        Brooklyn-based Nick Murphy writes,
-                                        performs and records all of his own
-                                        music, giving it a warm, intimate feel
-                                        with a solid groove structure. An artist
-                                        of considerable range.
-                                    </LeadText>
+                                    <div className="flex justify-center">
+                                        <IconButton name="facebook" size="xl" color="lightBlue" />
+                                    </div>
+                                    <div className="mt-2 text-gray-700">
+                                        <Typography className="text-sm font-medium">
+                                            Email
+                                        </Typography>
+                                    </div>
                                     <a
                                         href="#pablo"
                                         onClick={(e) => e.preventDefault()}

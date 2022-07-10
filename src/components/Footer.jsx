@@ -1,4 +1,4 @@
-import {H5, LeadText, Icon} from '@material-tailwind/react';
+import {Typography} from '@material-tailwind/react';
 
 function Footer() {
     return (
@@ -7,12 +7,11 @@ function Footer() {
                 <div className="container max-w-7xl mx-auto px-4">
                     <div className="flex flex-wrap text-center lg:text-left pt-6">
                         <div className="w-full lg:w-6/12 px-4">
-                            <H5 color="gray">Material Tailwind</H5>
+                            <Typography className="text-gray-500" variant="h5" component="p">
+                                Group07- Project "A Job Day Roi"
+                            </Typography>
                             <div className="-mt-4">
-                                <LeadText color="blueGray">
-                                    Easy to use React components for Tailwind
-                                    CSS and Material Design.
-                                </LeadText>
+                                
                             </div>
                             <div className="flex gap-2 mt-6 md:justify-start md:mb-0 mb-8 justify-center">
                                 <a
@@ -21,10 +20,7 @@ function Footer() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <Icon
-                                        family="font-awesome"
-                                        name="fab fa-facebook-square"
-                                    />
+                                    
                                 </a>
                                 <a
                                     href="https://www.twitter.com/creativetim"
@@ -32,10 +28,7 @@ function Footer() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <Icon
-                                        family="font-awesome"
-                                        name="fab fa-twitter"
-                                    />
+                                    
                                 </a>
                                 <a
                                     href="https://www.instagram.com/creativetimofficial/"
@@ -43,10 +36,7 @@ function Footer() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <Icon
-                                        family="font-awesome"
-                                        name="fab fa-instagram"
-                                    />
+                                    
                                 </a>
                                 <a
                                     href="https://www.dribbble.com/creativetim"
@@ -54,10 +44,7 @@ function Footer() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <Icon
-                                        family="font-awesome"
-                                        name="fab fa-dribbble"
-                                    />
+                                    
                                 </a>
                                 <a
                                     href="https://www.youtube.com/channel/UCVyTG4sCw-rOvB9oHkzZD1w"
@@ -65,10 +52,7 @@ function Footer() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <Icon
-                                        family="font-awesome"
-                                        name="fab fa-youtube"
-                                    />
+                                    
                                 </a>
                                 <a
                                     href="https://github.com/creativetimofficial"
@@ -76,10 +60,7 @@ function Footer() {
                                     target="_blank"
                                     rel="noopener noreferrer"
                                 >
-                                    <Icon
-                                        family="font-awesome"
-                                        name="fab fa-github"
-                                    />
+                                    
                                 </a>
                             </div>
                         </div>
@@ -184,17 +165,7 @@ function Footer() {
                     <hr className="my-6 border-gray-300" />
                     <div className="flex flex-wrap items-center md:justify-between justify-center">
                         <div className="w-full md:w-4/12 px-4 mx-auto text-center">
-                            <div className="text-sm text-gray-700 font-medium py-1">
-                                Copyright © {new Date().getFullYear()} Material
-                                Tailwind by{' '}
-                                <a
-                                    href="https://www.creative-tim.com?ref=mtk"
-                                    className="text-gray-700 hover:text-gray-900 transition-all"
-                                >
-                                    Creative Tim
-                                </a>
-                                .
-                            </div>
+                            
                         </div>
                     </div>
                 </div>

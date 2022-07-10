@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar';
 import SimpleFooter from '../components/SimpleFooter';
 import Page from '../components/login/Page';
 import Container from '../components/login/Container';
-import {Card, CardHeader, CardBody, CardFooter, H5, InputIcon, Button} from '@material-tailwind/react';
+import {Card, CardHeader, CardBody, CardFooter, Typography, Button, IconButton} from '@material-tailwind/react';
 export default function Register() {
     return (
         <Page>
@@ -11,35 +11,20 @@ export default function Register() {
             <Container>
                 <Card>
                     <CardHeader color="lightBlue">
-                        <H5 color="white" style={{ marginBottom: 0 }}>
+                        <Typography className="text-blue-gray-800 text-3xl font-semibold">
                             Register
-                        </H5>
+                        </Typography>
                     </CardHeader>
 
                     <CardBody>
                         <div className="mb-10 px-4">
-                            <InputIcon
-                                type="text"
-                                color="lightBlue"
-                                placeholder="Full Name"
-                                iconName="account_circle"
-                            />
+                            <IconButton name="person" size="xl" color="lightBlue" />
                         </div>
                         <div className="mb-10 px-4">
-                            <InputIcon
-                                type="email"
-                                color="lightBlue"
-                                placeholder="Email Address"
-                                iconName="email"
-                            />
+                            <IconButton name="email" size="xl" color="lightBlue" />
                         </div>
                         <div className="mb-4 px-4">
-                            <InputIcon
-                                type="password"
-                                color="lightBlue"
-                                placeholder="Password"
-                                iconName="lock"
-                            />
+                            <IconButton name="password" size="xl" color="lightBlue" />
                         </div>
                     </CardBody>
                     <CardFooter>
