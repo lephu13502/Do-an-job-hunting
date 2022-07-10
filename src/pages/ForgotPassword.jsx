@@ -2,7 +2,10 @@ import {useState} from 'react';
 import {Link} from 'react-router-dom';
 import {getAuth, sendPasswordResetEmail} from 'firebase/auth';
 import {toast} from 'react-toastify';
-import {ReactComponent as ArrowRightIcon} from '../assets/svg/keyboardArrowRightIcon.svg';
+import {Card, CardBody, Typography, Button, Input} from '@material-tailwind/react';
+import SimpleFooter from '../components/SimpleFooter';
+import Page from '../components/login/Page';
+import Container from '../components/login/Container';
 
 function ForgotPassword() {
     const [email, setEmail] = useState('');
@@ -21,30 +24,37 @@ function ForgotPassword() {
         }
     }
     return (
-        <div className='pageContainer'>
-            <header>
-                <p className="pageHeader">
-                    Forgot Password
-                </p>
-            </header>
-            <main>
-                <form onSubmit={onSubmit}>
-                    <input type="email" className='emailInput' placeholder='Email' id='email' value={email} onChange={onChange} />
-                    <Link className='forgotPasswordLink' to='/sign-in'>
-                        Sign in
-                    </Link>
-                    <div className="signInBar">
-                        <div className="signInText">
-                            Send Reset Link
-                            <button className='signInButton'>
-                                <ArrowRightIcon fill='ffffff' width='34px' height='34px' />
-                            </button>
-                        </div>
+        <Page>
+            <Container>
+                <Card>
+                    <div className="flex justify-center bg-bb">
+                        <Typography variant="h5" color="Black">
+                            Forgot Password
+                        </Typography>
                     </div>
-                </form>
-            </main>
-        </div>
-    )
+                    <CardBody>
+                        <form onSubmit={onSubmit}>
+                            <div className="mb-12 px-4 bg-bb">
+                                <Input type="email" className="emailInput" placeholder="Email" id="email" 
+                                value={email} onChange={onChange} variant="standard"/>
+                            </div>
+                            <Link className='forgotPasswordLink' to='/login'>
+                                Sign in
+                            </Link>
+                            <div className="flex justify-center bg-bb">
+                                <button>
+                                    <Button type="submit" color="light-blue" buttonType="link" size="lg" ripple="true" variant="gradient">
+                                        Send Reset Link
+                                    </Button>
+                                </button>
+                            </div>
+                        </form>
+                    </CardBody>
+                </Card>
+            </Container>
+            <SimpleFooter />
+        </Page>
+    );
 }
 
 export default ForgotPassword

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Button, Typography } from "@material-tailwind/react";
- 
+import logo from '../assets/logo1-modified.png';
 export default function Example() {
   const icon = (
     <svg
@@ -27,11 +27,14 @@ export default function Example() {
           variant="small"
           className="mr-4 cursor-pointer py-1.5 font-normal"
         >
-          A Job Đây Rồi
+          <Link to="/">
+            <img src={logo} alt="logo" className="h-8 w-8" />
+            A Job Đây Rồi
+          </Link>
         </Typography>
         <ul className="flex items-center gap-6">
           <Typography as="li" variant="small" className="p-1 font-normal">
-            <Link to="/">Về chúng tôi</Link>
+            <Link to="/about">Về chúng tôi</Link>
 
           </Typography>
           <Typography as="li" variant="small" className="p-1 font-normal">
@@ -43,10 +46,10 @@ export default function Example() {
         </ul>
         <ul className="flex items-right gap-6">
           <Button variant="gradient" size="sm">
-            Đăng nhập
+            <Link to="/login">Đăng nhập</Link>
           </Button>
           <Button variant="gradient" size="sm" color="amber">
-            Đăng ký
+          <Link to="/login">Đăng ký</Link>
           </Button>
         </ul>
       </div>

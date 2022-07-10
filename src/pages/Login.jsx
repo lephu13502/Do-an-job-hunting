@@ -63,9 +63,11 @@ function Login() {
                                 Forgot password
                             </Link>
                             <div className="flex justify-center bg-bb">
-                                <Button type="submit" color="light-blue" buttonType="link" size="lg" ripple="true" variant="gradient">
-                                    Login
-                                </Button>
+                                <button>
+                                    <Button type="submit" color="light-blue" buttonType="link" size="lg" ripple="true" variant="gradient">
+                                        Login
+                                    </Button>
+                                </button>
                                 
                             </div>
                         </form>
