@@ -1,13 +1,14 @@
 import { Link } from 'react-router-dom';
-import { NavDropdown, Nav, Navbar, DropdownButton, Dropdown } from 'react-bootstrap';
-import { Avatar } from "@material-tailwind/react";
+import { NavDropdown, Nav, Navbar,} from 'react-bootstrap';
+import AccountMenu from './AccountMenu';
 import logo from '../assets/logo1-modified.png';
 export default function UserNav() {
+  
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="light" expand="md">
       <div className="container flex items-center justify-between">
         <Navbar.Brand>
-          <Link to="/">
+          <Link to="/explore">
             <img alt="" src={logo} width="50" height="50" className="d-inline-block align-center"/>{' '}
             A Job Đây Rồi
           </Link>
@@ -30,13 +31,7 @@ export default function UserNav() {
           <Nav.Link href="/about">Về chúng tôi</Nav.Link>
         </ul>
         <ul className="flex items-right gap-6">
-        <DropdownButton align="end">
-          <Avatar src={logo} />
-          Phú Lê
-          <Dropdown.Item href="/profile">Hồ sơ của tôi</Dropdown.Item>
-          <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-          <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-        </DropdownButton>
+          <AccountMenu img={logo} name="Phu Le" />
         </ul>
       </div>
     </Navbar>

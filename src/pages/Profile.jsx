@@ -30,6 +30,8 @@ function Profile() {
   const [formData, setFormData] = useState({
     name: auth.currentUser.displayName,
     email: auth.currentUser.email,
+    profile_img: auth.currentUser.photoURL,
+    
   })
 
   const { name, email } = formData
@@ -37,21 +39,21 @@ function Profile() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    const fetchUserListings = async () => {
-      const listingsRef = collection(db, 'listings')
+    const fetchUserPosts = async () => {
+      const postsRef = collection(db, 'posts')
 
       const q = query(
-        listingsRef,
+        postsRef,
         where('userRef', '==', auth.currentUser.uid),
         orderBy('timestamp', 'desc')
       )
 
       const querySnap = await getDocs(q)
 
-      let listings = []
+      let posts = []
 
       querySnap.forEach((doc) => {
-        return listings.push({
+        return posts.push({
           id: doc.id,
           data: doc.data(),
         })
@@ -61,13 +63,10 @@ function Profile() {
       setLoading(false)
     }
 
-    fetchUserListings()
+    fetchUserPosts()
   }, [auth.currentUser.uid])
 
-  const onLogout = () => {
-    auth.signOut()
-    navigate('/')
-  }
+  
 
   const onSubmit = async () => {
     try {
@@ -107,7 +106,7 @@ function Profile() {
     }
   }
 
-  const onEdit = (listingId) => navigate(`/edit-listing/${listingId}`)
+  const onEdit = (postId) => navigate(`/edit-post/${postId}`)
     return (
         <>
             <div className="absolute w-full z-20">

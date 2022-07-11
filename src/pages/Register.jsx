@@ -38,7 +38,7 @@ function Register() {
             delete formDataCopy.password
             formDataCopy.timestamp = serverTimestamp()
             await setDoc(doc(db, 'users', user.uid), formDataCopy)
-            navigate('/')
+            navigate('/explore')
         } catch (error) {
             toast.error('Wrong registeration')
         }
@@ -49,7 +49,7 @@ function Register() {
             <Container>
                 <Card>
                     <div className="flex justify-center bg-bb">
-                        <Typography variant="h5" color="Black">
+                        <Typography variant="h5" color="black">
                             Đăng ký
                         </Typography>
                     </div>

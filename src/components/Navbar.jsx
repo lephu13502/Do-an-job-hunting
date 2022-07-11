@@ -4,7 +4,7 @@ import { NavDropdown, Nav, Navbar } from 'react-bootstrap';
 import logo from '../assets/logo1-modified.png';
 export default function DefaultNavbar() {
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar bg="light" expand="md">
       <div className="container flex items-center justify-between">
         <Navbar.Brand>
           <Link to="/">

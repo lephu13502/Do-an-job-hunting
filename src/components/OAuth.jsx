@@ -23,7 +23,7 @@ function OAuth() {
                     timestamp: serverTimestamp()
                 })
             }
-            navigate('/')
+            navigate('/explore')
         } catch (error) {
             toast.error('Couldnt authorize with google')
         }
@@ -31,7 +31,7 @@ function OAuth() {
     return (
         <div className='socialLogin'>
             <p>
-                Sign {location.pathname === '/register' ? 'up' : 'in'} with 
+                Đăng {location.pathname === '/register' ? 'ký' : 'nhập'} bằng tài khoản
             </p>
             <button className='socialIconDiv' onClick={onGoogleClick}>
                 <img className='socialIconImg' src={googleIcon} alt='google'/>

@@ -758,10 +758,10 @@ video {
 	background-color: rgba(239, 68, 68, var(--tw-bg-opacity));
 }
 .bg-landing-background{
-	background-image: url('/src/assets/img/bg.png');
+	background-image: url('/src/assets/img/bg2.png');
 }
 .bg-login-background{
-	background-image: url('/src/assets/img/background-1920x1280.jpg');
+	background-image: url('/src/assets/img/login-bg.png');
 }
 .bg-profile-background{
 	background-image: linear-gradient(rgba(0,0,0, 0.75), rgba(0,0,0, 0.75)), url('/src/assets/img/background-1920x1080.jpg');
