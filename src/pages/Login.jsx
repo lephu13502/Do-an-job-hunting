@@ -5,7 +5,6 @@ import {getAuth, signInWithEmailAndPassword} from 'firebase/auth'
 import visibilityIcon from '../assets/svg/visibilityIcon.svg';
 import OAuth from '../components/OAuth';
 import {Card, CardBody, Typography, Button, Input} from '@material-tailwind/react';
-import SimpleFooter from '../components/SimpleFooter';
 import Page from '../components/login/Page';
 import Container from '../components/login/Container';
 
@@ -41,8 +40,8 @@ function Login() {
             <Container>
                 <Card>
                     <div className="flex justify-center bg-bb">
-                        <Typography variant="h5" color="Black">
-                            Login
+                        <Typography variant="h5" color="black">
+                            Đăng nhập
                         </Typography>
                     </div>
                     <CardBody>
@@ -53,32 +52,28 @@ function Login() {
                             </div>
                             <div className="passwordInputDiv">
                                 <div className="mb-8 px-4">
-                                    <Input type={showPassword ? 'text' : 'password'} className='passwordInput' placeholder='Password' id='password' 
+                                    <Input type={showPassword ? 'text' : 'password'} className='passwordInput' placeholder='Mật khẩu' id='password' 
                                     value={password} onChange={onChange} variant="standard"/>
                                     <img src={visibilityIcon} alt='show password' className="showPassword" 
                                     onClick={() => setShowPassword((prevState)=>!prevState)}/>
                                 </div>
                             </div>
                             <Link to='/forgot-password' className='forgotPasswordLink'>
-                                Forgot password
+                                Quên mật khẩu
                             </Link>
                             <div className="flex justify-center bg-bb">
-                                <button>
-                                    <Button type="submit" color="light-blue" buttonType="link" size="lg" ripple="true" variant="gradient">
-                                        Login
-                                    </Button>
-                                </button>
-                                
+                                <Button type="submit" color="light-blue" size="lg" ripple={true} variant="gradient">
+                                    Đăng nhập
+                                </Button>
                             </div>
                         </form>
                         <OAuth/>
                         <Link to='/register' className='registerLink'>
-                            Don't have account? Register instead
+                            Không có tài khoản? Đăng ký ngay
                         </Link>
                     </CardBody>
                 </Card>
             </Container>
-            <SimpleFooter />
         </Page>
     );
 }

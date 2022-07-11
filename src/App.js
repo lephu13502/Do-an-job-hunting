@@ -2,6 +2,7 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Home from './pages/Home';
+import Explore from './pages/Explore';
 import PrivateRoute from './components/PrivateRoute'
 import ForgotPassword from './pages/ForgotPassword'
 import Profile from './pages/Profile';
@@ -13,7 +14,7 @@ import EditPost from './pages/EditPost';
 import Post from './pages/Post';
 import Contact from './pages/Contact';
 
-// Tailwind CSS Style Sheet
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './assets/styles/tailwind.css';
 
 function App() {
@@ -27,6 +28,9 @@ function App() {
             <Route path='/register' element={<Register/>}/>
             <Route path='/profile' element={<PrivateRoute/>}>
               <Route path='/profile' element={<Profile/>}/>
+            </Route>
+            <Route path='/explore' element={<PrivateRoute/>}>
+              <Route path='/explore' element={<Explore/>}/>
             </Route>
             <Route path='/category/:categoryName' element={<Category/>}/>
             <Route path='/create-post' element={<CreatePost/>}/>

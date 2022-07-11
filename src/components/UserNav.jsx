@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
-import { Button} from "@material-tailwind/react";
-import { NavDropdown, Nav, Navbar } from 'react-bootstrap';
+import { NavDropdown, Nav, Navbar, DropdownButton, Dropdown } from 'react-bootstrap';
+import { Avatar } from "@material-tailwind/react";
 import logo from '../assets/logo1-modified.png';
-export default function DefaultNavbar() {
+export default function UserNav() {
   return (
     <Navbar bg="light" expand="lg">
       <div className="container flex items-center justify-between">
@@ -14,19 +14,6 @@ export default function DefaultNavbar() {
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <ul className="flex items-center gap-6">
-          <NavDropdown title="Tìm nhân sự" id="basic-nav-dropdown">
-            <NavDropdown.Item>
-              <Link to="/jobs">
-                Tìm nhân sự
-              </Link>
-            </NavDropdown.Item>
-            <NavDropdown.Item>
-              <Link to="/create-post">
-                Đăng tuyển dụng
-              </Link>
-            </NavDropdown.Item>
-          </NavDropdown>
-          
           <NavDropdown title="Tìm công việc" id="basic-nav-dropdown">
             <NavDropdown.Item>
               <Link to="/jobs">
@@ -43,12 +30,13 @@ export default function DefaultNavbar() {
           <Nav.Link href="/about">Về chúng tôi</Nav.Link>
         </ul>
         <ul className="flex items-right gap-6">
-          <Button variant="gradient" size="sm">
-            <Link to="/login">Đăng nhập</Link>
-          </Button>
-          <Button variant="gradient" size="sm" color="amber">
-          <Link to="/register">Đăng ký</Link>
-          </Button>
+        <DropdownButton align="end">
+          <Avatar src={logo} />
+          Phú Lê
+          <Dropdown.Item href="/profile">Hồ sơ của tôi</Dropdown.Item>
+          <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+          <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+        </DropdownButton>
         </ul>
       </div>
     </Navbar>

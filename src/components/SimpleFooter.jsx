@@ -47,17 +47,7 @@ function SimpleFooter() {
                             </li>
                         </ul>
 
-                        <div className="text-sm text-white font-medium">
-                            Copyright © {new Date().getFullYear()} Material
-                            Tailwind by{' '}
-                            <a
-                                href="https://www.creative-tim.com?ref=mtk"
-                                className="text-white"
-                            >
-                                Creative Tim
-                            </a>
-                            .
-                        </div>
+                        
                     </div>
                 </div>
             </footer>

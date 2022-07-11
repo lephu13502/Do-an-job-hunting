@@ -7,7 +7,6 @@ import {db} from '../firebase.config'
 import visibilityIcon from '../assets/svg/visibilityIcon.svg';
 import OAuth from '../components/OAuth';
 import {Card, CardBody, Typography, Button, Input} from '@material-tailwind/react';
-import SimpleFooter from '../components/SimpleFooter';
 import Page from '../components/login/Page';
 import Container from '../components/login/Container';
 
@@ -15,10 +14,11 @@ function Register() {
     const [showPassword,setShowPassword] = useState(false) 
     const [formData,setFormData] = useState({
         name: '',
+        type: 'employee',
         email: '',
         password: ''
     })
-    const {name, email, password} = formData
+    const {name, type, email, password} = formData
     const navigate = useNavigate()
     const onChange = (e) => {
         setFormData((prevState) => ({
@@ -50,13 +50,13 @@ function Register() {
                 <Card>
                     <div className="flex justify-center bg-bb">
                         <Typography variant="h5" color="Black">
-                            Register
+                            Đăng ký
                         </Typography>
                     </div>
                     <CardBody>
                         <form onSubmit={onSubmit}>
                             <div className="mb-12 px-4 bg-bb">
-                                <Input type="text" className="nameInput" placeholder="Name" id="name" 
+                                <Input type="text" className="nameInput" placeholder="Tên" id="name" 
                                 value={name} onChange={onChange} variant="standard"/>
                             </div>
                             <div className="mb-8 px-4">
@@ -65,29 +65,25 @@ function Register() {
                             </div>
                             <div className="passwordInputDiv">
                                 <div className="mb-4 px-4">
-                                    <Input type={showPassword ? 'text' : 'password'} className='passwordInput' placeholder='Password' id='password' 
+                                    <Input type={showPassword ? 'text' : 'password'} className='passwordInput' placeholder='Mật khẩu' id='password' 
                                     value={password} onChange={onChange} variant="standard"/>
                                     <img src={visibilityIcon} alt='show password' className="showPassword" 
                                     onClick={() => setShowPassword((prevState)=>!prevState)}/>
                                 </div>
                             </div>
                             <div className="flex justify-center bg-bb">
-                                <button>
-                                    <Button type="submit" color="light-blue" buttonType="link" size="lg" ripple="true" variant="gradient">
-                                        Register
-                                    </Button>
-                                </button>
-                                
+                                <Button type="submit" color="light-blue" size="lg" ripple={true} variant="gradient">
+                                    Đăng ký
+                                </Button>
                             </div>
                         </form>
                         <OAuth/>
                         <Link to='/login' className='registerLink'>
-                            Already had an account? Login instead
+                            Đã có tài khoản? Đăng nhập ngay
                         </Link>
                     </CardBody>
                 </Card>
             </Container>
-            <SimpleFooter />
         </Page>
     );
 }

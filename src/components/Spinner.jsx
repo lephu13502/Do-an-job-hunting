@@ -1,9 +1,8 @@
-function Spinner() {
+import { Spinner } from "react-bootstrap"
+function CustomSpinner() {
     return (
-        <div className="loadingSpinnerContainer">
-            <div className="loadingSpinner"></div>
-        </div>
+        <Spinner animation="border" variant="warning" />
     )
 }
 
-export default Spinner
+export default CustomSpinner
