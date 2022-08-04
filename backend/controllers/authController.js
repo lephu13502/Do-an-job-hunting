@@ -1,4 +1,4 @@
-const Candidate = require('../models/candidate')
+const Candidate = require('../models/User')
 
 const authController = {
     // REGISTER
