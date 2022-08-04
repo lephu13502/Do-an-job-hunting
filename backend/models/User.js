@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
 
-const candidateSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
     username: {
         type: String,
         required: true,
@@ -24,9 +24,13 @@ const candidateSchema = new mongoose.Schema({
                 throw new Error('Email is invalid')
             }
         }
+    }, 
+    type: {
+        type: String,
+        default: 'candidate'
     }
 }, {
     collection: 'candidates'
-})
+}) 
 
-module.exports = mongoose.model("Candidate", candidateSchema) 
+module.exports = mongoose.model("User", userSchema) 
