@@ -27,7 +27,7 @@ const candidateSchema = new mongoose.Schema({
     },
     admin: {
         type: Boolean,
-        dafault: false
+        default: false
     },
     type: {
         type: String,
