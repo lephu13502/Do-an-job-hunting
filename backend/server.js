@@ -1,6 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-const userRoute = require("./routes/user")
+const candidateRoute = require("./routes/candidate")
 const authRoute = require('./routes/auth')
 require("./db/database")
 
@@ -11,7 +11,7 @@ app.use(bodyParser.json())
 
 // CRUD Candidates
 app.use('/auth', authRoute)
-// app.use('/user', userRoute)
+app.use('/candidate', candidateRoute)
 
 const PORT = process.env.PORT || 3000
 

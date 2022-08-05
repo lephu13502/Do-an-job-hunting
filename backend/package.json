@@ -409,6 +409,7 @@
     "json5": "^2.2.1",
     "jsonfile": "^6.1.0",
     "jsonpointer": "^5.0.0",
+    "jsonwebtoken": "^8.5.1",
     "jsx-ast-utils": "^3.3.1",
     "jszip": "^3.10.0",
     "kind-of": "^6.0.3",

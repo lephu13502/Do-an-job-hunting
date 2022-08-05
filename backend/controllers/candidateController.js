@@ -1,8 +1,8 @@
-const User = require("../models/User")
+const Candidate = require("../models/Candidate")
 
-const userController = {
+const candidateController = {
     addCandidate: async(req, res) => {
-        const candidate = new User(req.body)
+        const candidate = new Candidate(req.body)
         try {
             await candidate.save()
             res.status(200).json(candidate)
@@ -10,9 +10,9 @@ const userController = {
             res.status(400).json(error)
         }
     },
-    getCandidates: async(req, res) => {
+    getAllCandidates: async(req, res) => {
         try {
-            const candidates = await User.find({})
+            const candidates = await Candidate.find({})
             res.status(200).json(candidates)
         } catch (error) {
             res.status(500).json(error)
@@ -20,7 +20,7 @@ const userController = {
     },
     getCandidateById: async(req, res) => {
         try {
-            const candidate = await User.findById(req.params.id)
+            const candidate = await Candidate.findById(req.params.id)
 
             if (!candidate) {
                 return res.status(404).json()
@@ -41,7 +41,7 @@ const userController = {
         }
 
         try {
-            const candidate = await User.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
+            const candidate = await Candidate.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
 
             if (!candidate) {
                 return res.status(404).json()
@@ -54,7 +54,7 @@ const userController = {
     },
     deleteCandidate: async(req, res) => {
         try {
-            const candidate = await User.findByIdAndDelete(req.params.id)
+            const candidate = await Candidate.findByIdAndDelete(req.params.id)
 
             if (!candidate) {
                 return res.status(404).json()
@@ -67,4 +67,4 @@ const userController = {
     }
 }
 
-module.exports = userController
+module.exports = candidateController
