@@ -3,72 +3,65 @@ const jwt = require('jsonwebtoken')
 require('dotenv').config()
 const Recruiter = require("../models/Recruiter")
 const recruiterController = {
-      //@POST Add/register recruiter 
-      addRecruiter: async(req,res)=>{
-            const { recruiterName, username, password, email} = req.body
-            //simple validation
-            if (!recruiterName || !username || !password|| !email)
-            {
-                  return res.status(400).json({success: false, message:'Missing username, password, name or email'})
+      GetAllRecruiter: async(req, res) => {
+            try {
+                const recruiters = await Recruiter.find({})
+                if(!recruiters)
+                {
+                  return res.status(400).json({success:false, message:"There are no User exist to show"})
+                }
+                res.status(200).json(recruiters)
+            }catch (err) {
+                res.status(500).json({success:false, message:'Internal server error'})
             }
+      },
+      GetOneRecruiter: async(req,res) =>{
             try{
-                  //check for existing user
-                  const newRecruiter = await Recruiter.findOne({username, email})
-                  if(newRecruiter)
+                  const OneRecruiter = await Recruiter.findById(req.params.id) //params is ":"
+                  if(!OneRecruiter)
                   {
-                        return res.status(400).json({success: false, message:"An account with the username or email already existed"})
+                        return res.status(400).json({success: false, message: "ID NOT FOUND"})
                   }
-                  //all good
-                  const hashedPassword = await argon2.hash(password)
-                  const newUser = await new Recruiter({
-                        recruiterName,
-                        username,
-                        email, 
-                        password: hashedPassword})
-                  const SavedNewUser = await newUser.save()
-                  //return web token
-                  const accessToken = jwt.sign(
-                        {
-                        id: newUser._id
-                        }, 
-                        process.env.JWT_ACCESS_KEY)
-                  return res.status(200).json({success: true, message: 'User created successfully', accessToken,SavedNewUser})
-                  //return res.status(200).json(savedUser)
-                  
+                  return res.status(200).json(OneRecruiter)
+
             }catch(err){
+                  return res.status(500).json({success:false, message:'Internal server error'})
+
+            }
+      },
+      UpdateRecruiter: async(req, res) => {
+            const updates = Object.keys(req.body)
+            const allowedUpdates = ['recruiterName','username', 'password', 'email']
+            const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
+    
+            if (!isValidOperation) {
+                  return res.status(400).json({success: false,message: 'Invalid updates!' })
+            }
+    
+            try {
+                  const recruiter = await Recruiter.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
+    
+                  if (!recruiter) {
+                        return res.status(400).json({success: false, message:"No recruiter found!"})
+                  }
+    
+                  return res.status(200).json(recruiter)
+            }catch (err) {
                   return res.status(500).json({success:false, message:'Internal server error'})
             }
       },
+      DeleteRecruiter: async(req, res) => {
+            try {
+                  const recruiter = await Recruiter.findByIdAndDelete(req.params.id)
 
-
-      //@POST Login recruiter
-      loginRecruiter: async(req,res)=>{
-            const {username, password} = req.body
-            //simple validation
-            if (!username || !password)
-            {
-                  return res.status(400).json({success: false, message:'Missing username or password'})
-            }
-            try{
-                  //Check for existing user
-                  const recruiter = await Recruiter.findOne({username})
-                  if(!recruiter) return res.status(400).json({success: false, message: "incorrect username"})
-                  //Username found
-                  const PasswordValid = await argon2.verify(recruiter.password,password)
-                  if(!PasswordValid) return res.status(400).json({success: false, message: "incorrect password"})
-                  //All good, return token
-                  const accessToken = jwt.sign(
-                        {
-                        userId: recruiter._id
-                        }, 
-                        process.env.JWT_ACCESS_KEY)
-                  return res.status(200).json({success: true, message: 'Logged in successfully', accessToken})
-            }
-            catch(err){
+                  if (!recruiter) {
+                        return res.status(400).json({success: false, message:"No recruiter found!"})
+                  }
+                  //All good
+                  return res.status(200).json({success: true, message:"Delete successfully"})
+            }catch (err) {
                   return res.status(500).json({success:false, message:'Internal server error'})
-            }
-
-
+      }
       }
 };
 module.exports = recruiterController;

@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 app.use(morgan("common"))
 
-//Auth Routes
+//Auth Routes (login & register)
 app.use('/api/auth', authRoute)
 // CRUD Candidates
 app.use('/api/candidate', candidateRoute)
