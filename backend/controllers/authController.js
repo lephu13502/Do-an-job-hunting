@@ -1,7 +1,7 @@
 const Candidate = require('../models/Candidate')
 const jwt = require('jsonwebtoken')
 
-const authController = {
+const authControllerCandidate = {
     // REGISTER
     registerUser: async(req, res) => {
         try {
@@ -39,5 +39,4 @@ const authController = {
         }
     }
 }
-
-module.exports = authController
+module.exports = authControllerCandidate
