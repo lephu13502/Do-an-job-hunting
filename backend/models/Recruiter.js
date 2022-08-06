@@ -30,7 +30,15 @@ const RecruiterSchema = new Schema({
                     throw new Error('Email is invalid')
                 }
             }
-      }
+      },
+      admin: {
+            type: Boolean,
+            default: false
+        },
+        type: {
+            type: String,
+            default: "recruiter"
+        }
 },{
 
       collection:'recruiter'
