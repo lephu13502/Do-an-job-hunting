@@ -56,7 +56,19 @@ import CloseIcon from '@mui/icons-material/CloseSharp';
 //     );
 //   }
 
-function SearchBar() {
+function SearchBar({ placeholder, data }) {
+    const [filteredData, setFilteredData] = useState([]);
+    const [wordEntered, setWordEntered] = useState("");
+    const handleClick = () => {
+        console.log('click');
+    } 
+    const handleFilter = (event) => {
+      const searchWord = event.target.value;
+      setWordEntered(searchWord);
+      const newFilter = data.filter((value) => {
+        return value.title.toLowerCase().includes(searchWord.toLowerCase());
+      })
+    }
     return (
     <div class="container">
 
@@ -66,17 +78,19 @@ function SearchBar() {
 
           <div class="search">
             <i class="fa fa-search"></i>
-            <input type="text" class="form-control" placeholder="Tìm công việc ? Tìm ngay"/>
-            <button class="btn btn-primary">Search</button>
+            <input 
+            type="text" 
+            class="form-control"
+            placeholder="Tìm công việc ? Tìm ngay"
+            value={wordEntered}
+            onChange={handleFilter}
+            />
+            <button class="btn btn-primary" onClick={handleClick}>Search</button>
           </div>
           
         </div>
-
         </div>
+    </div>)
+}
 
-
-</div>)}
-
-
-  
-  export default SearchBar
+export default SearchBar;
