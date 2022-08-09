@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { NavDropdown, Nav, Navbar,} from 'react-bootstrap';
-import AccountMenu from './AccountMenu';
+import SearchBar from './SearchBar';
+// import AccountMenu from './AccountMenu';
 import logo from '../assets/logo1-modified.png';
 export default function UserNav() {
   
@@ -14,6 +15,9 @@ export default function UserNav() {
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <div className='SearchBarDiv'>
+          <SearchBar placeholder="Tìm kiếm công việc" />
+        </div>
         <ul className="flex items-center gap-6">
           <NavDropdown title="Tìm công việc" id="basic-nav-dropdown">
             <NavDropdown.Item>
@@ -31,7 +35,7 @@ export default function UserNav() {
           <Nav.Link href="/about">Về chúng tôi</Nav.Link>
         </ul>
         <ul className="flex items-right gap-6">
-          <AccountMenu img={logo} name="Phu Le" />
+          {/* <AccountMenu img={logo} name="Phu Le" /> */}
         </ul>
       </div>
     </Navbar>
