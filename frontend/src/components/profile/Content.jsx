@@ -1,102 +1,313 @@
-import ProfilePicture from '../../assets/img/team-2-800x800.jpg';
-import {Button, IconButton, Typography} from '@material-tailwind/react';
+import Avatar from "@mui/material/Avatar";
+import logo from "../../assets/logo1-modified.png";
+import { Button, IconButton, Typography } from "@material-tailwind/react";
 function Content() {
-    return (
-        <section className="relative py-16 bg-gray-100">
-            <div className="container max-w-7xl px-4 mx-auto">
-                <div className="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-2xl -mt-64">
-                    <div className="px-6">
-                        <div className="flex flex-wrap justify-center">
-                            <div className="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
-                                <div className="relative">
-                                    <div className="w-40 -mt-20">
-                                        <img src={ProfilePicture} alt="profile" />
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="w-full lg:w-4/12 px-4 lg:order-3 lg:self-center flex justify-center mt-10 lg:justify-end lg:mt-0">
-                                <Button color="lightBlue" ripple="light">
-                                    Conntect
-                                </Button>
-                            </div>
-                            <div className="w-full lg:w-4/12 px-4 lg:order-1">
-                                <div className="flex justify-center py-4 lg:pt-4 pt-8">
-                                    <div className="mr-4 p-3 text-center">
-                                        <span className="text-xl font-bold block uppercase tracking-wide text-gray-900">
-                                            22
-                                        </span>
-                                        <span className="text-sm text-gray-700">
-                                            Friends
-                                        </span>
-                                    </div>
-                                    <div className="mr-4 p-3 text-center">
-                                        <span className="text-xl font-bold block uppercase tracking-wide text-gray-900">
-                                            10
-                                        </span>
-                                        <span className="text-sm text-gray-700">
-                                            Photos
-                                        </span>
-                                    </div>
-                                    <div className="lg:mr-4 p-3 text-center">
-                                        <span className="text-xl font-bold block uppercase tracking-wide text-gray-900">
-                                            89
-                                        </span>
-                                        <span className="text-sm text-gray-700">
-                                            Comments
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="text-center my-8">
-                            <Typography className="text-blue-gray-800 text-xl font-semibold">
-                                John Doe
-                            </Typography>
-                            <div className="mt-0 mb-2 text-gray-700 font-medium flex items-center justify-center gap-2">
-                                <IconButton name="facebook" size="xl" color="lightBlue" />
-                                Los Angeles, California
-                            </div>
-                            <div className="mb-2 text-gray-700 mt-10 flex items-center justify-center gap-2">
-                                <IconButton name="twitter" size="xl" color="lightBlue" />
-                                Solution Manager - Creative Tim Officer
-                            </div>
-                            <div className="mb-2 text-gray-700 flex items-center justify-center gap-2">
-                                <IconButton name="instagram" size="xl" color="lightBlue" />
-                                University of Computer Science
-                            </div>
-                        </div>
-
-                        <div className="mb-10 py-2 border-t border-gray-200 text-center">
-                            <div className="flex flex-wrap justify-center">
-                                <div className="w-full lg:w-9/12 px-4 flex flex-col items-center">
-                                    <div className="flex justify-center">
-                                        <IconButton name="facebook" size="xl" color="lightBlue" />
-                                    </div>
-                                    <div className="mt-2 text-gray-700">
-                                        <Typography className="text-sm font-medium">
-                                            Email
-                                        </Typography>
-                                    </div>
-                                    <a
-                                        href="#pablo"
-                                        onClick={(e) => e.preventDefault()}
-                                    >
-                                        <Button
-                                            color="lightBlue"
-                                            buttonType="link"
-                                            ripple="dark"
-                                        >
-                                            Show more
-                                        </Button>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+  return (
+    <div className="container-fluid">
+      <div className="container profile-container">
+        <div className="row">
+          <div id="menu-jk" className="col-md-4">
+            <div className="pro-s-cover">
+              <img src={logo} alt="" sx={{ width: 32, height: 32 }} />
+              <Typography variant="h6" color="black">
+                Andrew Smith{" "}
+              </Typography>
+              <span>Freelancer</span>
+              <p>Web Designer</p>
+              <div className="num-box w-100 d-flex">
+                <div className="hire">
+                  <b>55+</b> <br />
+                  <span>Projects </span>
                 </div>
+                <div className="msg">
+                  <b>7+</b> <br />
+                  <span>Experiance</span>
+                </div>
+              </div>
+              <div className="msg-box d-flex">
+                <div className="hire">
+                  <button type="button" className="btn btn-outline-dark">
+                    Hire
+                  </button>
+                </div>
+                <div className="msg">
+                  <button type="button" className="btn btn-outline-dark">
+                    Message
+                  </button>
+                </div>
+              </div>
             </div>
-        </section>
-    );
+            <div className="con-cover">
+              <h4>Contact</h4>
+              <ul className="row no-margin">
+                <li>
+                  <i className="fab fa-facebook-f"></i>
+                </li>
+                <li>
+                  <i className="fab fa-twitter"></i>
+                </li>
+                <li>
+                  <i className="fab fa-google-plus-g"></i>
+                </li>
+                <li>
+                  <i className="fab fa-linkedin-in"></i>
+                </li>
+                <li>
+                  <i className="fab fa-github"></i>
+                </li>
+              </ul>
+              <div className="cd-ro row no-margin">
+                <span>Mobile No</span>
+                <p>
+                  <i className="fas fa-phone-square"></i> +1 233 232 4322
+                </p>
+              </div>
+              <div className="cd-ro row no-margin">
+                <span>Email Addreess</span>
+                <p>
+                  <i className="fas fa-envelope-square"></i>{" "}
+                  info@smarteyeapps.com
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="col-md-8">
+            <div className="data-box">
+              <h2>About Me</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
+                a urna posuere, aliquet elit in, fermentum ligula. Sed est
+                augue, molestie sed tortor sed, posuere commodo lectus. Aliquam
+                blandit eros a nibh tristique, id accumsan lacus rutrum. Mauris
+                ornare neque vitae mollis luctus. Proin malesuada quam ut dui
+                sagittis, sit amet accumsan nibh bibendum. Sed maximus sed
+                turpis a rhoncus. Vestibulum quis velit leo. Nunc laoreet
+                tincidunt congue. Quisque efficitur, erat congue volutpat
+                malesuada, erat felis finibus ex
+              </p>
+              <div className="btn-ro row no-margin">
+                <ul className="btn-link">
+                  <li>
+                    <a href="">
+                      <i className="fas fa-paper-plane"></i> Hire Me
+                    </a>
+                  </li>
+                  <li>
+                    <a href="">
+                      <i className="fas fa-cloud-download-alt"></i> Download
+                      Resume
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="data-box">
+              <h2>Experiance</h2>
+              <div className="row exp-row">
+                <h6>Business Development</h6>
+                <span>Microsoft</span>
+                <i>Apiral 2011 - Present</i>
+
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Aenean a urna posuere, aliquet elit in, fermentum ligula. Sed
+                  est augue, molestie sed tortor sed, posuere commodo lectus.
+                </p>
+              </div>
+              <div className="row exp-row">
+                <h6>Business Development</h6>
+                <span>Microsoft</span>
+                <i>Apiral 2011 - Present</i>
+
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Aenean a urna posuere, aliquet elit in, fermentum ligula. Sed
+                  est augue, molestie sed tortor sed, posuere commodo lectus.
+                </p>
+              </div>
+              <div className="row exp-row last">
+                <h6>Business Development</h6>
+                <span>Microsoft</span>
+                <i>Apiral 2011 - Present</i>
+
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Aenean a urna posuere, aliquet elit in, fermentum ligula. Sed
+                  est augue, molestie sed tortor sed, posuere commodo lectus.
+                </p>
+              </div>
+            </div>
+
+            <div className="data-box education-detail">
+              <h2>Education Details</h2>
+              <div className="service no-margin row">
+                <div className="col-sm-3 no-padding resume-dat serv-logo">
+                  <h6>2013-2015</h6>
+                  <p>Master Degree</p>
+                </div>
+                <div className="col-sm-9 rgbf">
+                  <h5>Cambridg University</h5>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua.
+                  </p>
+                </div>
+              </div>
+              <div className="service no-margin row">
+                <div className="col-sm-3 no-padding resume-dat serv-logo">
+                  <h6>2013-2015</h6>
+                  <p>Bacholers Degree</p>
+                </div>
+                <div className="col-sm-9 rgbf">
+                  <h5>Anna University</h5>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua.
+                  </p>
+                </div>
+              </div>
+              <div className="service no-margin row">
+                <div className="col-sm-3 no-padding resume-dat serv-logo">
+                  <h6>2013-2015</h6>
+                  <p>High School</p>
+                </div>
+                <div className="col-sm-9 rgbf">
+                  <h5>A.M.H.S.S</h5>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua.
+                  </p>
+                </div>
+              </div>
+              <div className="service no-margin row">
+                <div className="col-sm-3 no-padding resume-dat serv-logo">
+                  <h6>2013-2015</h6>
+                  <p>School</p>
+                </div>
+                <div className="col-sm-9 rgbf">
+                  <h5>Anna University</h5>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="data-box service-box">
+              <h2>Services</h2>
+              <div className="service no-margin row">
+                <div className="col-sm-2 no-padding serv-logo">
+                  <i className="fab fa-delicious"></i>
+                </div>
+                <div className="col-sm-10 rgbf serv-det">
+                  <h5>Graphic Design</h5>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua.
+                  </p>
+                </div>
+              </div>
+              <div className="service no-margin row">
+                <div className="col-sm-2 no-padding serv-logo">
+                  <i className="fas fa-code"></i>
+                </div>
+                <div className="col-sm-10 rgbf serv-det">
+                  <h5>Graphic Design</h5>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua.
+                  </p>
+                </div>
+              </div>
+              <div className="service no-margin row">
+                <div className="col-sm-2 no-padding serv-logo">
+                  <i className="fab fa-chrome"></i>
+                </div>
+                <div className="col-sm-10 rgbf serv-det">
+                  <h5>Graphic Design</h5>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua.
+                  </p>
+                </div>
+              </div>
+              <div className="service no-margin row">
+                <div className="col-sm-2 no-padding serv-logo">
+                  <i className="fab fa-android"></i>
+                </div>
+                <div className="col-sm-10 rgbf serv-det">
+                  <h5>Graphic Design</h5>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="data-box contact-tab">
+              <h2>Contact US</h2>
+              <div className="row no-margin">
+                <div className="col-md-12 no-padding"></div>
+                <div className="col-md-12">
+                  <br />
+                  <div className="row cont-row no-margin">
+                    <div className="col-sm-6">
+                      <input
+                        placeholder="Enter Full Name"
+                        type="text"
+                        className="form-control form-control-sm"
+                      />
+                    </div>
+                    <div className="col-sm-6">
+                      <input
+                        placeholder="Enter Email Address"
+                        type="text"
+                        className="form-control form-control-sm"
+                      />
+                    </div>
+                  </div>
+                  <div className="row cont-row no-margin">
+                    <div className="col-sm-6">
+                      <input
+                        placeholder="Enter Mobile Number"
+                        type="text"
+                        className="form-control form-control-sm"
+                      />
+                    </div>
+                  </div>
+                  <div className="row cont-row no-margin">
+                    <div className="col-sm-12">
+                      <textarea
+                        placeholder="Enter your Message"
+                        className="form-control form-control-sm"
+                        rows="10"
+                      ></textarea>
+                    </div>
+                  </div>
+                  <div className="row cont-row no-margin">
+                    <div className="col-sm-6">
+                      <button className="btn btn-sm btn-success">
+                        Send Message
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }
-export default Content
+export default Content;
