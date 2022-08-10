@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import apiRequest from "../redux/apiRequest";
+import useFetch from "../hooks/useFetch";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import logo from "../assets/logo1-modified.png";
@@ -14,7 +15,8 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import Logout from "@mui/icons-material/Logout";
 export default function AccountMenu() {
-  const auth = useDispatch();
+  //const { data, loading, error } = useFetch(`/`);
+  const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -23,18 +25,16 @@ export default function AccountMenu() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const onLogout = () => {
-    auth.logout();
-    navigate("/");
-  };
+  //   const onLogout = () => {
+  //     auth.logout();
+  //     navigate("/");
+  //   };
   const navigate = useNavigate();
 
   // const [formData, setFormData] = useState({
   //     name: auth.currentUser.displayName,
   //     email: auth.currentUser.email,
   // })
-
-  const { name, email } = formData;
 
   return (
     <>
@@ -50,7 +50,7 @@ export default function AccountMenu() {
             variant="outlined"
           >
             <Avatar sx={{ width: 32, height: 32 }} src={logo} />
-            {name}
+            Phú
           </Button>
         </Tooltip>
       </Box>
@@ -94,8 +94,8 @@ export default function AccountMenu() {
         </MenuItem>
         <MenuItem>Tài khoản của tôi</MenuItem>
         <Divider />
-
-        <MenuItem onClick={onLogout}>
+        {/* onClick={onLogout} */}
+        <MenuItem>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>

@@ -103,6 +103,9 @@ function Register() {
             <Link to="/login" className="registerLink">
               Đã có tài khoản? Đăng nhập ngay
             </Link>
+            <Link to="/register-recruiter" className="registerLink">
+              Đăng ký nhà tuyển dụng
+            </Link>
           </CardBody>
         </Card>
       </Container>
