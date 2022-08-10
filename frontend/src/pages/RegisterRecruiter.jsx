@@ -31,7 +31,7 @@ function Register() {
         username: username,
         password: password,
       };
-      apiRequest.registerCandidate(newUser, dispatch, navigate);
+      apiRequest.registerRecruiter(newUser, dispatch, navigate);
       toast.success("Register Successfully");
     } catch (error) {
       toast.error("Wrong registeration");
@@ -53,7 +53,7 @@ function Register() {
                 <Input
                   type="text"
                   className="nameInput"
-                  placeholder="Tên"
+                  placeholder="Tên nhà tuyển dụng"
                   id="name"
                   onChange={(e) => setUsername(e.target.value)}
                   variant="standard"
