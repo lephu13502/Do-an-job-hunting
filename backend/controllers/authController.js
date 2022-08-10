@@ -155,7 +155,8 @@ const authController = {
             //All good, return token
             const accessToken = jwt.sign(
                 {
-                userId: recruiter._id
+                userId: recruiter._id,
+                isAdmin: recruiter.admin
                 }, 
                 process.env.JWT_ACCESS_KEY)
             return res.status(200).json({success: true, message: 'Logged in successfully', accessToken})
