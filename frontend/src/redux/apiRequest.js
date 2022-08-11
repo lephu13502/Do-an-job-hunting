@@ -7,7 +7,7 @@ const apiRequest = ({
         try {
             const res = await axios.post("http://localhost:8000/auth/candidate/login", user)
             dispatch(loginSuccess(res.data))
-            navigate("/")
+            navigate("/explore")
         } catch (error) {
             dispatch(loginFailed())
         }
@@ -17,7 +17,7 @@ const apiRequest = ({
         try {
             await axios.post("http://localhost:8000/auth/candidate/register", user)
             dispatch(registerSuccess())
-            navigate("/login")
+            navigate("/explore")
         } catch (error) {
             dispatch(registerFailed())
         }
@@ -27,7 +27,7 @@ const apiRequest = ({
         try {
             const res = await axios.post("http://localhost:8000/auth/recruiter/login", user)
             dispatch(loginSuccess(res.data))
-            navigate("/")
+            navigate("/explore")
         } catch (error) {
             dispatch(loginFailed())
         }
@@ -37,7 +37,7 @@ const apiRequest = ({
         try {
             await axios.post("http://localhost:8000/auth/recruiter/register", user)
             dispatch(registerSuccess())
-            navigate("/login")
+            navigate("/explore")
         } catch (error) {
             dispatch(registerFailed())
         }

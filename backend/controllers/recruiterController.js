@@ -30,22 +30,46 @@ const recruiterController = {
             }
       },
       UpdateRecruiter: async(req, res) => {
-            const updates = Object.keys(req.body)
-            const allowedUpdates = ['recruiterName','username', 'password', 'email']
-            const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
-    
-            if (!isValidOperation) {
-                  return res.status(400).json({success: false,message: 'Invalid updates!' })
-            }
-    
+            
             try {
-                  const recruiter = await Recruiter.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true })
+                  const {username, email} = req.body
+                  const recruiter = await Recruiter.findById(req.params.id) //params is ":"
     
                   if (!recruiter) {
-                        return res.status(400).json({success: false, message:"No recruiter found!"})
+                        return res.status(400).json({success: false,message: 'ID non-existent' })
                   }
-    
-                  return res.status(200).json(recruiter)
+                  if(username)
+                  {
+                        const FindExistedRecruiter = await Recruiter.findOne({username})
+                        if(FindExistedRecruiter)
+                        {
+                              return res.status(400).json({success: false, message:"Username already exists"})
+                        }
+                  }
+                  if(email)
+                  {
+                        const FindExistedRecruiter = await Recruiter.findOne({email})
+                        if(FindExistedRecruiter)
+                        {
+                              return res.status(400).json({success: false, message:"email already exists"})
+                        }
+                  }
+                  /* if(username&&email)
+                  {
+                        const FindExistedUsername = await Recruiter.findOne({username})
+                        if(FindExistedUsername)
+                        {
+                              return res.status(400).json({success: false, message:"Username already exists"})
+                        }
+                        const FindExistedEmail = await Recruiter.findOne({email})
+                        if(FindExistedEmail)
+                        {
+                              return res.status(400).json({success: false, message:"email already exists"})
+                        }
+                  }  */
+                  //ALL GOOD
+                  await recruiter.updateOne({$set:req.body})
+                  return res.status(200).json({success: true, message:"Updated successfully", recruiter})
             }catch (err) {
                   return res.status(500).json({success:false, message:'Internal server error'})
             }

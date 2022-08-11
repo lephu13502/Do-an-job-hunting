@@ -15,8 +15,9 @@ import Container from "../components/login/Container";
 import apiRequest from "../redux/apiRequest";
 import { useDispatch } from "react-redux";
 
-function Login() {
+function Register() {
   const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
@@ -26,13 +27,15 @@ function Login() {
     e.preventDefault();
     try {
       const newUser = {
+        email: email,
         username: username,
         password: password,
       };
-      apiRequest.loginCandidate(newUser, dispatch, navigate);
-      toast.success("Login Successfully");
+      apiRequest.registerRecruiter(newUser, dispatch, navigate);
+      toast.success("Register Successfully");
     } catch (error) {
-      toast.error("Invalid username or password");
+      toast.error("Wrong registeration");
+      console.log(error);
     }
   };
   return (
@@ -41,7 +44,7 @@ function Login() {
         <Card>
           <div className="flex justify-center bg-bb">
             <Typography variant="h5" color="black">
-              Đăng nhập
+              Đăng ký
             </Typography>
           </div>
           <CardBody>
@@ -49,15 +52,25 @@ function Login() {
               <div className="mb-12 px-4 bg-bb">
                 <Input
                   type="text"
-                  className="usernamelInput"
-                  placeholder="Username"
-                  id="username"
+                  className="nameInput"
+                  placeholder="Tên nhà tuyển dụng"
+                  id="name"
                   onChange={(e) => setUsername(e.target.value)}
                   variant="standard"
                 />
               </div>
+              <div className="mb-8 px-4">
+                <Input
+                  type="email"
+                  className="emailInput"
+                  placeholder="Email"
+                  id="email"
+                  onChange={(e) => setEmail(e.target.value)}
+                  variant="standard"
+                />
+              </div>
               <div className="passwordInputDiv">
-                <div className="mb-8 px-4">
+                <div className="mb-4 px-4">
                   <Input
                     type={showPassword ? "text" : "password"}
                     className="passwordInput"
@@ -74,9 +87,6 @@ function Login() {
                   />
                 </div>
               </div>
-              <Link to="/forgot-password" className="forgotPasswordLink">
-                Quên mật khẩu
-              </Link>
               <div className="flex justify-center bg-bb">
                 <Button
                   type="submit"
@@ -85,13 +95,16 @@ function Login() {
                   ripple={true}
                   variant="gradient"
                 >
-                  Đăng nhập
+                  Đăng ký
                 </Button>
               </div>
             </form>
             <OAuth />
+            <Link to="/login" className="registerLink">
+              Đã có tài khoản? Đăng nhập ngay
+            </Link>
             <Link to="/register" className="registerLink">
-              Không có tài khoản? Đăng ký ngay
+              Đăng ký ứng viên
             </Link>
           </CardBody>
         </Card>
@@ -99,4 +112,4 @@ function Login() {
     </Page>
   );
 }
-export default Login;
+export default Register;

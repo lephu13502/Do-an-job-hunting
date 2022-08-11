@@ -22,7 +22,7 @@ const colors = {
     red: 'bg-red-500',
 };
 
-export default function StatusCard({ color, icon, title, children }) {
+export default function StatusCard({ color, icon, icon1 ,title, children }) {
     return (
         <div className="w-full md:w-4/12 px-4 flex justify-center text-center">
             <Card>
@@ -30,6 +30,9 @@ export default function StatusCard({ color, icon, title, children }) {
                     <div
                         className={`p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-md rounded-full ${colors[color]}`}
                     >
+                        <Typography className="text-black text-6xl">
+                            {icon1}
+                        </Typography>
                         <Typography className="text-white text-6xl">
                             {icon}
                         </Typography>

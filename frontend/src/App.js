@@ -8,6 +8,7 @@ import ForgotPassword from './pages/ForgotPassword'
 import Profile from './pages/Profile';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import RegisterRecruiter from './pages/RegisterRecruiter';
 import Category from './pages/Category';
 import CreatePost from './pages/CreatePost';
 import EditPost from './pages/EditPost';
@@ -26,6 +27,7 @@ function App() {
             <Route path='/forgot-password' element={<ForgotPassword/>}/>
             <Route path='/login' element={<Login/>}/>
             <Route path='/register' element={<Register/>}/>
+            <Route path='/register-recruiter' element={<RegisterRecruiter/>}/>
             <Route path='/profile' element={<PrivateRoute/>}>
               <Route path='/profile' element={<Profile/>}/>
             </Route>
