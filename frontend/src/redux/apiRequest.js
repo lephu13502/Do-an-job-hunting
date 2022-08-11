@@ -13,12 +13,12 @@ const apiRequest = ({
             dispatch(loginFailed())
         }
     },
-    registerCandidate: async(user, dispatch, navigate) => {
+    registerCandidate: async(user, dispatch) => {
         dispatch(registerStart())
         try {
             await axios.post("http://localhost:8000/auth/candidate/register", user)
             dispatch(registerSuccess())
-            navigate("/explore")
+            
         } catch (error) {
             dispatch(registerFailed())
         }
@@ -33,12 +33,11 @@ const apiRequest = ({
             dispatch(loginFailed())
         }
     },
-    registerRecruiter: async(user, dispatch, navigate) => {
+    registerRecruiter: async(user, dispatch) => {
         dispatch(registerStart())
         try {
             await axios.post("http://localhost:8000/auth/recruiter/register", user)
             dispatch(registerSuccess())
-            navigate("/explore")
         } catch (error) {
             dispatch(registerFailed())
         }

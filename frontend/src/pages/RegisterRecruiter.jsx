@@ -31,7 +31,8 @@ function Register() {
         username: username,
         password: password,
       };
-      apiRequest.registerRecruiter(newUser, dispatch, navigate);
+      apiRequest.registerRecruiter(newUser, dispatch);
+      apiRequest.loginRecruiter(newUser, dispatch, navigate);
       toast.success("Register Successfully");
     } catch (error) {
       toast.error("Wrong registeration");
@@ -44,7 +45,7 @@ function Register() {
         <Card>
           <div className="flex justify-center bg-bb">
             <Typography variant="h5" color="black">
-              Đăng ký
+              Đăng ký nhà tuyển dụng
             </Typography>
           </div>
           <CardBody>
@@ -99,7 +100,7 @@ function Register() {
                 </Button>
               </div>
             </form>
-            <OAuth />
+            {/* <OAuth /> */}
             <Link to="/login" className="registerLink">
               Đã có tài khoản? Đăng nhập ngay
             </Link>

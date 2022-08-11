@@ -31,7 +31,8 @@ function Register() {
         username: username,
         password: password,
       };
-      apiRequest.registerCandidate(newUser, dispatch, navigate);
+      apiRequest.registerCandidate(newUser, dispatch);
+      apiRequest.loginCandidate(newUser, dispatch, navigate);
       toast.success("Register Successfully");
     } catch (error) {
       toast.error("Wrong registeration");
@@ -99,7 +100,7 @@ function Register() {
                 </Button>
               </div>
             </form>
-            <OAuth />
+            {/* <OAuth /> */}
             <Link to="/login" className="registerLink">
               Đã có tài khoản? Đăng nhập ngay
             </Link>

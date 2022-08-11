@@ -1,248 +1,239 @@
-import { useState, useEffect, useRef } from 'react'
-import { getAuth, onAuthStateChanged } from 'firebase/auth'
-import {
-  getStorage,
-  ref,
-  uploadBytesResumable,
-  getDownloadURL,
-} from 'firebase/storage'
-import { doc, updateDoc, getDoc, serverTimestamp } from 'firebase/firestore'
-import { db } from '../firebase.config'
-import { useNavigate,useParams } from 'react-router-dom'
-import { toast } from 'react-toastify'
-import { v4 as uuidv4 } from 'uuid'
-import Spinner from '../components/Spinner'
+import { useState, useEffect, useRef } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
+import { v4 as uuidv4 } from "uuid";
+import Spinner from "../components/Spinner";
 
 function EditPost() {
-    // eslint-disable-next-line
-    const [geolocationEnabled, setGeolocationEnabled] = useState(false)
-    const [loading, setLoading] = useState(false)
-    const [listing, setListing] = useState(null)
-    const [formData, setFormData] = useState({
-        type: 'rent',
-        name: '',
-        bedrooms: 1,
-        bathrooms: 1,
-        parking: false,
-        furnished: false,
-        address: '',
-        offer: false,
-        regularPrice: 0,
-        discountedPrice: 0,
-        images: {},
-        latitude: 0,
-        longitude: 0,
-    })
+  // // eslint-disable-next-line
+  // const [geolocationEnabled, setGeolocationEnabled] = useState(false)
+  // const [loading, setLoading] = useState(false)
+  // const [listing, setListing] = useState(null)
+  // const [formData, setFormData] = useState({
+  //     type: 'rent',
+  //     name: '',
+  //     bedrooms: 1,
+  //     bathrooms: 1,
+  //     parking: false,
+  //     furnished: false,
+  //     address: '',
+  //     offer: false,
+  //     regularPrice: 0,
+  //     discountedPrice: 0,
+  //     images: {},
+  //     latitude: 0,
+  //     longitude: 0,
+  // })
 
-    const {
-        type,
-        name,
-        bedrooms,
-        bathrooms,
-        parking,
-        furnished,
-        address,
-        offer,
-        regularPrice,
-        discountedPrice,
-        images,
-        latitude,
-        longitude,
-    } = formData
+  // const {
+  //     type,
+  //     name,
+  //     bedrooms,
+  //     bathrooms,
+  //     parking,
+  //     furnished,
+  //     address,
+  //     offer,
+  //     regularPrice,
+  //     discountedPrice,
+  //     images,
+  //     latitude,
+  //     longitude,
+  // } = formData
 
-    const auth = getAuth()
-    const navigate = useNavigate()
-    const params = useParams()
-    const isMounted = useRef(true)
-    
-    useEffect(() => {
-        if (listing && listing.userRef !== auth.currentUser.uid) {
-            toast.error('You are not authorized to edit this listing')
-            navigate('/')
-        }
-    })
+  // const auth = getAuth()
+  // const navigate = useNavigate()
+  // const params = useParams()
+  // const isMounted = useRef(true)
 
-    useEffect(() => {
-        setLoading(true)
-        const fetchListing = async () => {
-            const docRef = doc(db, 'listings', params.listingId)
-            const docSnap = await getDoc(docRef)
-            if (docSnap.exists) {
-                setListing(docSnap.data())
-                setFormData({...docSnap.data(), address: docSnap.data().location})
-                setLoading(false)
-            } else {
-                navigate('/')
-                toast.error('Listing not found')
-            }
-        }
-        fetchListing()
-    }, [params.listingId, navigate])
+  // useEffect(() => {
+  //     if (listing && listing.userRef !== auth.currentUser.uid) {
+  //         toast.error('You are not authorized to edit this listing')
+  //         navigate('/')
+  //     }
+  // })
 
-    useEffect(() => {
-        if (isMounted) {
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-            setFormData({ ...formData, userRef: user.uid })
-            } else {
-            navigate('/sign-in')
-            }
-        })
-        }
+  // useEffect(() => {
+  //     setLoading(true)
+  //     const fetchListing = async () => {
+  //         const docRef = doc(db, 'listings', params.listingId)
+  //         const docSnap = await getDoc(docRef)
+  //         if (docSnap.exists) {
+  //             setListing(docSnap.data())
+  //             setFormData({...docSnap.data(), address: docSnap.data().location})
+  //             setLoading(false)
+  //         } else {
+  //             navigate('/')
+  //             toast.error('Listing not found')
+  //         }
+  //     }
+  //     fetchListing()
+  // }, [params.listingId, navigate])
 
-        return () => {
-        isMounted.current = false
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isMounted])
+  // useEffect(() => {
+  //     if (isMounted) {
+  //     onAuthStateChanged(auth, (user) => {
+  //         if (user) {
+  //         setFormData({ ...formData, userRef: user.uid })
+  //         } else {
+  //         navigate('/sign-in')
+  //         }
+  //     })
+  //     }
 
-    const onSubmit = async (e) => {
-        e.preventDefault()
+  //     return () => {
+  //     isMounted.current = false
+  //     }
+  //     // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [isMounted])
 
-        setLoading(true)
+  // const onSubmit = async (e) => {
+  //     e.preventDefault()
 
-        if (discountedPrice >= regularPrice) {
-        setLoading(false)
-        toast.error('Discounted price needs to be less than regular price')
-        return
-        }
+  //     setLoading(true)
 
-        if (images.length > 6) {
-        setLoading(false)
-        toast.error('Max 6 images')
-        return
-        }
+  //     if (discountedPrice >= regularPrice) {
+  //     setLoading(false)
+  //     toast.error('Discounted price needs to be less than regular price')
+  //     return
+  //     }
 
-        let geolocation = {}
-        let location
+  //     if (images.length > 6) {
+  //     setLoading(false)
+  //     toast.error('Max 6 images')
+  //     return
+  //     }
 
-        if (geolocationEnabled) {
-        const response = await fetch(
-            `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.REACT_APP_GEOCODE_API_KEY}`
-        )
+  //     let geolocation = {}
+  //     let location
 
-        const data = await response.json()
+  //     if (geolocationEnabled) {
+  //     const response = await fetch(
+  //         `https://maps.googleapis.com/maps/api/geocode/json?address=${address}&key=${process.env.REACT_APP_GEOCODE_API_KEY}`
+  //     )
 
-        geolocation.lat = data.results[0]?.geometry.location.lat ?? 0
-        geolocation.lng = data.results[0]?.geometry.location.lng ?? 0
+  //     const data = await response.json()
 
-        location =
-            data.status === 'ZERO_RESULTS'
-            ? undefined
-            : data.results[0]?.formatted_address
+  //     geolocation.lat = data.results[0]?.geometry.location.lat ?? 0
+  //     geolocation.lng = data.results[0]?.geometry.location.lng ?? 0
 
-        if (location === undefined || location.includes('undefined')) {
-            setLoading(false)
-            toast.error('Please enter a correct address')
-            return
-        }
-        } else {
-        geolocation.lat = latitude
-        geolocation.lng = longitude
-        }
+  //     location =
+  //         data.status === 'ZERO_RESULTS'
+  //         ? undefined
+  //         : data.results[0]?.formatted_address
 
-    // Store image in firebase
-    const storeImage = async (image) => {
-    return new Promise((resolve, reject) => {
-        const storage = getStorage()
-        const fileName = `${auth.currentUser.uid}-${image.name}-${uuidv4()}`
+  //     if (location === undefined || location.includes('undefined')) {
+  //         setLoading(false)
+  //         toast.error('Please enter a correct address')
+  //         return
+  //     }
+  //     } else {
+  //     geolocation.lat = latitude
+  //     geolocation.lng = longitude
+  //     }
 
-        const storageRef = ref(storage, 'images/' + fileName)
+  // // Store image in firebase
+  // const storeImage = async (image) => {
+  // return new Promise((resolve, reject) => {
+  //     const storage = getStorage()
+  //     const fileName = `${auth.currentUser.uid}-${image.name}-${uuidv4()}`
 
-        const uploadTask = uploadBytesResumable(storageRef, image)
+  //     const storageRef = ref(storage, 'images/' + fileName)
 
-        uploadTask.on(
-        'state_changed',
-        (snapshot) => {
-            const progress =
-            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-            console.log('Upload is ' + progress + '% done')
-            switch (snapshot.state) {
-            case 'paused':
-                console.log('Upload is paused')
-                break
-            case 'running':
-                console.log('Upload is running')
-                break
-            default:
-                break
-            }
-        },
-        (error) => {
-            reject(error)
-        },
-        () => {
-            // Handle successful uploads on complete
-            // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-            getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-            resolve(downloadURL)
-            })
-        }
-        )
-    })
-    }
+  //     const uploadTask = uploadBytesResumable(storageRef, image)
 
-    const imgUrls = await Promise.all(
-    [...images].map((image) => storeImage(image))
-    ).catch(() => {
-    setLoading(false)
-    toast.error('Images not uploaded')
-    return
-    })
+  //     uploadTask.on(
+  //     'state_changed',
+  //     (snapshot) => {
+  //         const progress =
+  //         (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+  //         console.log('Upload is ' + progress + '% done')
+  //         switch (snapshot.state) {
+  //         case 'paused':
+  //             console.log('Upload is paused')
+  //             break
+  //         case 'running':
+  //             console.log('Upload is running')
+  //             break
+  //         default:
+  //             break
+  //         }
+  //     },
+  //     (error) => {
+  //         reject(error)
+  //     },
+  //     () => {
+  //         // Handle successful uploads on complete
+  //         // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+  //         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+  //         resolve(downloadURL)
+  //         })
+  //     }
+  //     )
+  // })
+  // }
 
-    const formDataCopy = {
-    ...formData,
-    imgUrls,
-    geolocation,
-    timestamp: serverTimestamp(),
-    }
+  // const imgUrls = await Promise.all(
+  // [...images].map((image) => storeImage(image))
+  // ).catch(() => {
+  // setLoading(false)
+  // toast.error('Images not uploaded')
+  // return
+  // })
 
-    formDataCopy.location = address
-    delete formDataCopy.images
-    delete formDataCopy.address
-    !formDataCopy.offer && delete formDataCopy.discountedPrice
+  // const formDataCopy = {
+  // ...formData,
+  // imgUrls,
+  // geolocation,
+  // timestamp: serverTimestamp(),
+  // }
 
-    const docRef = doc(db, 'listings', params.listingId)
-    await updateDoc(docRef, formDataCopy)
-    setLoading(false)
-    toast.success('Listing saved')
-    navigate(`/category/${formDataCopy.type}/${docRef.id}`)
-    }
+  // formDataCopy.location = address
+  // delete formDataCopy.images
+  // delete formDataCopy.address
+  // !formDataCopy.offer && delete formDataCopy.discountedPrice
 
-    const onMutate = (e) => {
-        let boolean = null
+  // const docRef = doc(db, 'listings', params.listingId)
+  // await updateDoc(docRef, formDataCopy)
+  // setLoading(false)
+  // toast.success('Listing saved')
+  // navigate(`/category/${formDataCopy.type}/${docRef.id}`)
+  // }
 
-        if (e.target.value === 'true') {
-        boolean = true
-        }
-        if (e.target.value === 'false') {
-        boolean = false
-        }
+  // const onMutate = (e) => {
+  //     let boolean = null
 
-        // Files
-        if (e.target.files) {
-        setFormData((prevState) => ({
-            ...prevState,
-            images: e.target.files,
-        }))
-        }
+  //     if (e.target.value === 'true') {
+  //     boolean = true
+  //     }
+  //     if (e.target.value === 'false') {
+  //     boolean = false
+  //     }
 
-        // Text/Booleans/Numbers
-        if (!e.target.files) {
-        setFormData((prevState) => ({
-            ...prevState,
-            [e.target.id]: boolean ?? e.target.value,
-        }))
-        }
-    }
+  //     // Files
+  //     if (e.target.files) {
+  //     setFormData((prevState) => ({
+  //         ...prevState,
+  //         images: e.target.files,
+  //     }))
+  //     }
 
-    if (loading) {
-        return <Spinner />
-    }
+  //     // Text/Booleans/Numbers
+  //     if (!e.target.files) {
+  //     setFormData((prevState) => ({
+  //         ...prevState,
+  //         [e.target.id]: boolean ?? e.target.value,
+  //     }))
+  //     }
+  // }
 
-return (
-    <div className='profile'>
-    <header>
+  //   if (loading) {
+  //     return <Spinner />;
+  //   }
+
+  return (
+    <div className="profile">
+      {/* <header>
         <p className='pageHeader'>Edit Listing</p>
     </header>
 
@@ -473,9 +464,9 @@ return (
             Edit Listing
         </button>
         </form>
-    </main>
+    </main> */}
     </div>
-  )
+  );
 }
 
-export default EditPost
+export default EditPost;

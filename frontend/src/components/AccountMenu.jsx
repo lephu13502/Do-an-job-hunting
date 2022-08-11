@@ -29,7 +29,9 @@ export default function AccountMenu() {
   };
   const onLogout = async () => {
     try {
-      apiRequest.logout(dispatch);
+      //apiRequest.logout(user,dispatch,navigate);
+      localStorage.removeItem("user");
+      window.location.reload();
       navigate("/");
     } catch (error) {
       console.log(error);
