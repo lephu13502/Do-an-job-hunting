@@ -43,11 +43,12 @@ const apiRequest = ({
             dispatch(registerFailed())
         }
     },
-    logout: async(dispatch) => {
+    logout: async(user, dispatch, navigate) => {
         dispatch(logoutStart())
         try {
-            await axios.post("http://localhost:8000/auth/logout")
+            await axios.post("http://localhost:8000/auth/logout", user)
             dispatch(logoutSuccess())
+            navigate("/")
         } catch (error) {
             dispatch(logoutFailed())
         }
