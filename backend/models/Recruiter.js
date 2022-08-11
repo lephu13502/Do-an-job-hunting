@@ -1,6 +1,8 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
 const Schema = mongoose.Schema
+const Post = require('./Post')
+
 const RecruiterSchema = new Schema({
       recruiterName: {
             type:String,
@@ -34,11 +36,17 @@ const RecruiterSchema = new Schema({
       admin: {
             type: Boolean,
             default: false
-        },
-        type: {
+      },
+      type: {
             type: String,
             default: "recruiter"
+      },
+      posts: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref:"Post"
         }
+    ]
 },{
 
       collection:'recruiter'

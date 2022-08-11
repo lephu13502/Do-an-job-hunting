@@ -465,7 +465,7 @@
     "minimist": "^1.2.6",
     "mkdirp": "^0.5.6",
     "mongodb": "^4.8.0",
-    "mongoose": "^6.5.1",
+    "mongoose": "^6.5.2",
     "morgan": "^1.10.0",
     "ms": "^2.1.2",
     "multicast-dns": "^7.2.5",

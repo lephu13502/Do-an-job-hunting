@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const validator = require('validator')
-
+const Post = require('./Post')
 const candidateSchema = new mongoose.Schema({
     username: {
         type: String,
@@ -32,7 +32,13 @@ const candidateSchema = new mongoose.Schema({
     type: {
         type: String,
         default: "candidate"
-    }
+    },
+    posts: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref:"Post"
+        }
+    ]
 }, {
     collection: 'candidates'
 })

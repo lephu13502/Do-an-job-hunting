@@ -52,16 +52,16 @@ const authController = {
             } else if (req.body.password !== user.password) {
                 res.status(404).json('Wrong password!')
             } else {
-                // const accessToken = this.generateAccessToken(user)
-                // const refreshToken = this.generateRefreshToken(user)
-                // refreshTokens.push(refreshToken)
-                // res.cookie("thisRefreshToken", refreshToken, {   
-                //     httpOnly: true,
-                //     secure:false,
-                //     path: "/",
-                //     sameSite: "strict",
-                // })
-                return res.status(200).json({ user })
+                const accessToken = authController.generateAccessToken(user)
+                const refreshToken = authController.generateRefreshToken(user)
+                refreshTokens.push(refreshToken)
+                res.cookie("thisRefreshToken", refreshToken, {   
+                    httpOnly: true,
+                    secure:false,
+                    path: "/",
+                    sameSite: "strict",
+                })
+                return res.status(200).json({ user, accessToken })
             }
         }catch(error) {
             res.status(500).json(error)
@@ -155,7 +155,8 @@ const authController = {
             //All good, return token
             const accessToken = jwt.sign(
                 {
-                userId: recruiter._id
+                userId: recruiter._id,
+                isAdmin: recruiter.admin
                 }, 
                 process.env.JWT_ACCESS_KEY)
             return res.status(200).json({success: true, message: 'Logged in successfully', accessToken})
