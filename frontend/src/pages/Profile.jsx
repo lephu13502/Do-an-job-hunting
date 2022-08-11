@@ -78,8 +78,8 @@ function Profile() {
   //   setFormData((prevState) => ({
   //     ...prevState,
   //     [e.target.id]: e.target.value,
-  //   }))
-  // }
+  //   }));
+  // };
 
   // const onDelete = async (listingId) => {
   //   if (window.confirm('Are you sure you want to delete?')) {

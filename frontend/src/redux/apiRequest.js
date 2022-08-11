@@ -1,7 +1,8 @@
 import axios from "axios"
-import { loginFailed, loginStart, loginSuccess, registerFailed, registerStart, registerSuccess } from "./authSlice"
+import { loginFailed, loginStart, loginSuccess, registerFailed, registerStart, registerSuccess, logoutStart, logoutSuccess, logoutFailed } from "./authSlice"
 
 const apiRequest = ({
+    
     loginCandidate: async(user, dispatch, navigate) => {
         dispatch(loginStart())
         try {
@@ -40,6 +41,15 @@ const apiRequest = ({
             navigate("/explore")
         } catch (error) {
             dispatch(registerFailed())
+        }
+    },
+    logout: async(dispatch) => {
+        dispatch(logoutStart())
+        try {
+            await axios.post("http://localhost:8000/auth/logout")
+            dispatch(logoutSuccess())
+        } catch (error) {
+            dispatch(logoutFailed())
         }
     },
 })

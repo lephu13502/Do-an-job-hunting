@@ -48,9 +48,9 @@ function Login() {
             <form onSubmit={onSubmit}>
               <div className="mb-12 px-4 bg-bb">
                 <Input
-                  type="text"
-                  className="usernamelInput"
-                  placeholder="Username"
+                  type="username"
+                  className="emailInput"
+                  placeholder="Tên đăng nhập"
                   id="username"
                   onChange={(e) => setUsername(e.target.value)}
                   variant="standard"

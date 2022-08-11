@@ -15,8 +15,10 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import Logout from "@mui/icons-material/Logout";
 export default function AccountMenu() {
-  //const { data, loading, error } = useFetch(`/`);
+  const { data, loading, error } = useFetch(`http://localhost:8000/candidate`);
+  console.log(data);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -25,11 +27,14 @@ export default function AccountMenu() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  //   const onLogout = () => {
-  //     auth.logout();
-  //     navigate("/");
-  //   };
-  const navigate = useNavigate();
+  const onLogout = async () => {
+    try {
+      apiRequest.logout(dispatch);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   // const [formData, setFormData] = useState({
   //     name: auth.currentUser.displayName,
@@ -50,7 +55,7 @@ export default function AccountMenu() {
             variant="outlined"
           >
             <Avatar sx={{ width: 32, height: 32 }} src={logo} />
-            Phú
+            {/* {name} */}
           </Button>
         </Tooltip>
       </Box>
@@ -94,8 +99,7 @@ export default function AccountMenu() {
         </MenuItem>
         <MenuItem>Tài khoản của tôi</MenuItem>
         <Divider />
-        {/* onClick={onLogout} */}
-        <MenuItem>
+        <MenuItem onClick={onLogout}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>
