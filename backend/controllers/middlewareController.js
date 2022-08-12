@@ -10,7 +10,7 @@ const middlewareController = {
                 if (error) {
                     res.status(403).json('Token is not valid')
                 }
-                req.user = user
+                req.user = decoded.user
                 next()
             })
         }

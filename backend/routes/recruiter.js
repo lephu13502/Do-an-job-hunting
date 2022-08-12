@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const recruiterController = require("../controllers/recruiterController")
 const middlewareController = require("../controllers/middlewareController")
-
+const PostController = require("../controllers/postController")
 
 //@Route GET ALL recruiter (/recruiter/) 
 //router.get('/',middlewareController.verifyToken, recruiterController.GetAllRecruiter);
@@ -20,4 +20,7 @@ router.put('/:id',recruiterController.UpdateRecruiter);
 //TEST
 //
 router.delete('/:id',recruiterController.DeleteRecruiter);
+//Post
+router.post('/AddPost',PostController.AddNewPost);
+router.get('/GetPost/:id',PostController.GetPost);
 module.exports = router;

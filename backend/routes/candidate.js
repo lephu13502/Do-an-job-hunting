@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const candidateController = require("../controllers/candidateController")
 const middlewareController = require("../controllers/middlewareController")
-
+const PostController = require("../controllers/postController")
 router.get('/', candidateController.getAllCandidates)
 router.get('/:id', candidateController.getCandidateById)
 router.delete('/:id', candidateController.deleteCandidate)

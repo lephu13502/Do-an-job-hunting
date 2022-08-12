@@ -46,7 +46,7 @@ const RecruiterSchema = new Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref:"Post"
         }
-    ]
+      ]
 },{
 
       collection:'recruiter'

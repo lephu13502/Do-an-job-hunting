@@ -27,7 +27,7 @@ const authController = {
     generateAccessToken: (user) => {
         return jwt.sign (
                     {
-                        id: user.id,
+                        userId: user.id,
                         admin: user.admin,
                     },
                     process.env.JWT_ACCESS_KEY,
@@ -37,7 +37,7 @@ const authController = {
     generateRefreshToken: (user) => {
         return jwt.sign (
                     {
-                        id: user.id,
+                        userId: user.id,
                         admin: user.admin,
                     },
                     process.env.JWT_REFRESH_KEY,
@@ -126,7 +126,7 @@ const authController = {
             //return web token
             const accessToken = jwt.sign(
                 {
-                id: newUser._id
+                userId: newUser._id
                 }, 
                 process.env.JWT_ACCESS_KEY)
             return res.status(200).json({success: true, message: 'User created successfully', accessToken,SavedNewUser})

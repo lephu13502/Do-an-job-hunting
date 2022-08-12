@@ -2,6 +2,7 @@ const argon2 = require('argon2')
 const jwt = require('jsonwebtoken')
 require('dotenv').config()
 const Recruiter = require("../models/Recruiter")
+
 const recruiterController = {
       GetAllRecruiter: async(req, res) => {
             try {
