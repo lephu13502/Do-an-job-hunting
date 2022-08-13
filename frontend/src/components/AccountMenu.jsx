@@ -15,8 +15,11 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import Logout from "@mui/icons-material/Logout";
 export default function AccountMenu() {
-  const { data, loading, error } = useFetch(`http://localhost:8000/candidate`);
-  console.log(data);
+  const { data, loading, error } = useFetch(`http://localhost:8000/candidate}`);
+  const { data1, loading1, error1 } = useFetch(
+    `http://localhost:8000/candidate/${data.id}`
+  );
+  const name = data1 ? data1.name : "";
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
@@ -57,7 +60,7 @@ export default function AccountMenu() {
             variant="outlined"
           >
             <Avatar sx={{ width: 32, height: 32 }} src={logo} />
-            {/* {name} */}
+            {name}
           </Button>
         </Tooltip>
       </Box>
